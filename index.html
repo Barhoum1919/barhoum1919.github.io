@@ -5,6 +5,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ibrahim Darghouthi - Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+  /* ===== General Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background: #0d1117;
+  color: #e6edf3;
+  padding-top: 60px;
+}
+
+/* ===== Header / Hero ===== */
+header {
+  background: linear-gradient(135deg, #1f6feb, #0d1117);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+header nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #ff9800;
+}
+
+/* ===== Sections ===== */
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  border-left: 4px solid #1f6feb;
+  padding-left: 10px;
+}
+
+/* ===== Projects Grid ===== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: #161b22;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+}
+
+.project-card h3 {
+  margin-bottom: 10px;
+  color: #58a6ff;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #ff9800;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Contact ===== */
+#contact p {
+  margin: 10px 0;
+}
+
+#contact a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid #30363d;
+  font-size: 0.9rem;
+  color: #8b949e;
+}
+</style>
 </head>
 <body>
   <header>
@@ -37,5 +159,54 @@
     <p>LinkedIn: <a href="https://www.linkedin.com/in/ibrahim-darghouthi/">linkedin.com/in/ibrahim-darghouthi</a></p>
     <p>GitHub: <a href="https://github.com/Barhoum1919">github.com/Barhoum1919</a></p>
   </section>
+  <script> 
+// Smooth scrolling for nav links
+document.querySelectorAll('nav a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href'))
+      .scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Dark/Light Mode Toggle
+const toggleBtn = document.createElement("button");
+toggleBtn.innerText = "🌙 Toggle Theme";
+toggleBtn.style.position = "fixed";
+toggleBtn.style.bottom = "20px";
+toggleBtn.style.right = "20px";
+toggleBtn.style.padding = "10px 15px";
+toggleBtn.style.borderRadius = "8px";
+toggleBtn.style.border = "none";
+toggleBtn.style.cursor = "pointer";
+document.body.appendChild(toggleBtn);
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+});
+
+// Light mode styles
+const style = document.createElement("style");
+style.innerHTML = `
+  .light-mode {
+    background: #f4f4f9;
+    color: #222;
+  }
+  .light-mode header {
+    background: linear-gradient(135deg, #1f6feb, #6ea8fe);
+    color: white;
+  }
+  .light-mode .project-card {
+    background: #fff;
+    color: #222;
+    border: 1px solid #ddd;
+  }
+  .light-mode footer {
+    border-top: 1px solid #ddd;
+    color: #555;
+  }
+`;
+document.head.appendChild(style);
+  </script>
 </body>
 </html>
